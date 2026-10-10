@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Visualizer</title>
+    <meta name="description" content="Step-by-step visualizer for sorting and searching algorithms: bubble, selection, insertion, merge and quick sort, plus linear and binary search.">
+    <meta name="theme-color" content="#0e0f0d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e0f0d'/%3E%3Crect x='6' y='16' width='5' height='10' rx='1.5' fill='%23a3a299'/%3E%3Crect x='13.5' y='10' width='5' height='16' rx='1.5' fill='%23e0a63a'/%3E%3Crect x='21' y='5' width='5' height='21' rx='1.5' fill='%235fae7e'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to visualizer</a>
+    <header>
+        <h1>DSA Visualizer</h1>
+        <p>Step through sorting and searching algorithms and watch each comparison happen.</p>
+    </header>
+
+    <main id="main">
+        <section class="controls" aria-label="Visualizer controls">
+            <label class="algorithm-control">Algorithm
+                <select id="algorithm">
+                    <optgroup label="Sorting">
+                        <option>Bubble Sort</option>
+                        <option>Selection Sort</option>
+                        <option>Insertion Sort</option>
+                        <option>Merge Sort</option>
+                        <option>Quick Sort</option>
+                    </optgroup>
+                    <optgroup label="Searching">
+                        <option>Linear Search</option>
+                        <option>Binary Search</option>
+                    </optgroup>
+                </select>
+            </label>
+            <button id="randomize">Randomize</button>
+            <button id="start">Start</button>
+            <button id="pause" disabled>Pause</button>
+            <button id="previous" disabled>Previous</button>
+            <button id="next">Next Step</button>
+            <label class="speed-control">Speed
+                <input type="range" id="speed" min="100" max="1000" value="400">
+            </label>
+        </section>
+
+        <section class="visualizer">
+            <div class="condition-title">Current operation</div>
+            <div id="condition" aria-live="polite">Ready</div>
+            <div id="step">Step 0 / 0</div>
+            <div id="target" class="target"></div>
+            <div id="array" aria-label="Array visualization"></div>
+            <section id="merge-workspace" class="merge-workspace" hidden aria-live="polite">
+                <div class="merge-heading">
+                    <span class="merge-kicker">MERGE SORT WALKTHROUGH</span>
+                    <h3 id="merge-phase">Divide the array</h3>
+                    <p id="merge-note">Split the array into smaller parts.</p>
+                </div>
+                <div class="merge-columns">
+                    <div class="merge-lane"><span class="lane-label">LEFT HALF</span><div id="merge-left" class="merge-values"></div></div>
+                    <div class="merge-lane"><span class="lane-label">RIGHT HALF</span><div id="merge-right" class="merge-values"></div></div>
+                </div>
+                <div class="merge-arrow" aria-hidden="true">↓</div>
+                <div class="merge-result-lane"><span class="lane-label">MERGED RESULT</span><div id="merge-output" class="merge-values"></div></div>
+                <p class="merge-tip">Rule: compare the first unused value on each side, then move the smaller one into the result.</p>
+            </section>
+            <div class="code-panel">
+                <span class="code-label">Pseudocode</span>
+                <code id="code-line">Choose an algorithm to begin.</code>
+            </div>
+            <div class="legend">
+                <span><i class="legend-normal"></i>Normal</span>
+                <span><i class="legend-active"></i>Active</span>
+                <span><i class="legend-sorted"></i>Sorted / found</span>
+            </div>
+        </section>
+
+        <section class="info">
+            <div>
+                <p class="eyebrow">ALGORITHM GUIDE</p>
+                <h2 id="algorithm-title">Bubble Sort</h2>
+                <p id="algorithm-description">Bubble Sort compares adjacent elements and swaps them when they are out of order.</p>
+            </div>
+            <div class="complexity">
+                <div><span>Time complexity</span><strong id="time-complexity">O(n²)</strong></div>
+                <div><span>Space complexity</span><strong id="space-complexity">O(1)</strong></div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="Js/main.js"></script>
+</body>
+</html>
