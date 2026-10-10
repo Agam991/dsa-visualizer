@@ -6,8 +6,6 @@
 
 A small browser app that shows sorting and searching algorithms running one step at a time. Pick an algorithm, hit Next Step, and watch what it compares, swaps and skips. It's plain HTML, CSS and JavaScript, with no frameworks and no build step.
 
-Live demo: https://agam991.github.io/dsa-visualizer/
-
 ## What's in it
 
 **Sorting:** Bubble, Selection, Insertion, Merge and Quick Sort
